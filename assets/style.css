@@ -76,3 +76,9 @@ a{
     font-size: 24px;
     margin-block: 16px;
 }
+
+@media (max-width:768px) {
+    .countries-container{
+        justify-content: center;
+    }
+}
