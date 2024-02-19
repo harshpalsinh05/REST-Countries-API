@@ -81,4 +81,12 @@ a{
     .countries-container{
         justify-content: center;
     }
+    .title {
+        font-weight: 1000;
+        font-size: 1rem;
+    }
+    .title2{
+        font-size: 0.7rem;
+        font-weight: 1000;
+    }
 }
