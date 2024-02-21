@@ -11,30 +11,44 @@
     <!-- google font  -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,regular,500,600,700,800" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body>
+<body class="dark">
 
     <header class="header-container">
 
         <div class="header-content">
-            <h2 class="title">Where in the World ?</h2>
+            <h2 class="title"><a href="/">Where in the World ?</a></h2>
 
-            <p class="title2"><i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode </p>
+            <p class="title2" id="btn">&nbsp;&nbsp; <Span id="btn-text">Light Mode</Span></p>
         </div>
 
     </header>
 
     <main>
+
+        <div class="search-filter-container">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Search for a country....">
+            </div>
+
+            <select class="filter-by-region">
+                <option hidden>Filter by Region</option>
+                <option value="Africa">Africa</option>
+                <option value="America">America</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+        </div>
+
         <div class="countries-container">
 
         </div>
     </main>
 
-
-
-    <script src="/assets/script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 
 </html>
