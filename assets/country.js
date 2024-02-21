@@ -9,6 +9,7 @@ const capital = document.querySelector('.capital')
 const topLevelDomain = document.querySelector('.top-level-domain')
 const currencies = document.querySelector('.currencies')
 const languages = document.querySelector('.languages')
+const borderCountries = document.querySelector('.border-countries')
 
 
 fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`)
@@ -33,10 +34,10 @@ fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`)
             subregion.innerHTML = country.subregion
         }
 
-        if(country.capital){
+        if (country.capital) {
             capital.innerHTML = country.capital?.[0]
         }
-        
+
         topLevelDomain.innerHTML = country.tld.join(', ')
 
         if (country.currencies) {
@@ -48,5 +49,42 @@ fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`)
             languages.innerHTML = Object.values(country.languages).join(', ')
         }
 
+        if (country.borders) {
 
-    })  
+            country.borders.forEach((border) => {
+                fetch(`https://restcountries.com/v3.1/alpha/${border}`)
+                    .then((res) => res.json())
+                    .then(([borderCountry]) => {
+                        // console.log(borderCountry)
+                        const borderCountryTag = document.createElement('a')
+                        borderCountryTag.innerText = borderCountry.name.common
+                        borderCountryTag.href = `country.html?name=${borderCountry.name.common}`
+                        borderCountries.append(borderCountryTag)
+                    })
+            })
+        }
+    })
+
+let backbtn = document.querySelector('.back-button')
+let clicked = () => {
+    history.back()
+}
+backbtn.addEventListener('click', () => {
+    clicked()
+})
+
+let btn = document.getElementById("btn")
+let btntext = document.getElementById("btn-text")
+let btnimg = document.getElementById("btn-icon")
+// let moon = document.querySelector('.fa-regular')
+
+btn.onclick = () => {
+    document.body.classList.toggle("dark")
+    if (document.body.classList.contains("dark")) {
+        // btnimg.innerHTML = `<i class="fa-light fa-sun">`
+        btntext.innerHTML = "Light Mode"
+    } else {
+        // btnimg.innerHTML = `<i class="fa-regular fa-moon">`
+        btntext.innerHTML = "Dark Mode"
+    }
+}
